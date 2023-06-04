@@ -1,4 +1,4 @@
-import { BsFillCalendarFill } from "react-icons/bs";
+import Button from "./components/Button";
 
 function App() {
   let items = ["New York", "Los Angeles", "San Francisco"];
@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div>
-      <BsFillCalendarFill color="red" size="40" />
+      <Button onClick={() => {}}>My Button</Button>
     </div>
   );
 }
