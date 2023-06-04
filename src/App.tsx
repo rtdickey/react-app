@@ -8,26 +8,14 @@ function App() {
     console.log(item);
   };
 
-  const [clicked, setClicked] = useState(false);
-  const onClick = () => {
-    setClicked(!clicked);
-  };
+  const [alertVisible, setAlertVisible] = useState(false);
 
   return (
     <div>
-      {clicked && (
-        <Alert color="secondary" dismissible={true}>
-          Dismissible Alert 2
-          <button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-            onClick={onClick}
-          ></button>
-        </Alert>
+      {alertVisible && (
+        <Alert onClose={() => setAlertVisible(false)}>My Alert</Alert>
       )}
-      <Button onClick={onClick}>My Button</Button>
+      <Button onClick={() => setAlertVisible(true)}>My Button</Button>
     </div>
   );
 }

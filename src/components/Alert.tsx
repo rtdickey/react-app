@@ -1,19 +1,21 @@
 import { ReactNode } from "react";
 
 interface Props {
-  color?: "primary" | "secondary" | "info" | "warning" | "danger";
   children: ReactNode;
-  dismissible?: boolean;
+  onClose: () => void;
 }
 
-const Alert = ({ children, color = "primary", dismissible = false }: Props) => {
-  let alert = "alert alert-" + color;
-  if (dismissible) {
-    alert += " alert-dismissible";
-  }
+const Alert = ({ children, onClose }: Props) => {
   return (
-    <div className={alert + " fade show"} role="alert">
+    <div className="alert alert-primary alert-dismissible">
       {children}
+      <button
+        type="button"
+        className="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+        onClick={onClose}
+      ></button>
     </div>
   );
 };
