@@ -1,5 +1,5 @@
 import Alert from "./components/Alert";
-import MyButton from "./components/MyButton";
+import Button from "./components/Button";
 
 function App() {
   let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
@@ -8,16 +8,9 @@ function App() {
     console.log(item);
   };
 
-  const handleButtonClick = () => {
-    console.log("My button was successful");
-  };
-
   return (
     <div>
-      <Alert>
-        Hello <span>World</span>
-      </Alert>
-      <MyButton name="My Button Practice" onButtonClick={handleButtonClick} />
+      <Button onClick={() => console.log("click")}>My Button</Button>
     </div>
   );
 }
