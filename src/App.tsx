@@ -1,14 +1,9 @@
-import Button from "./components/Button";
+import Like from "./components/Like";
 
 function App() {
-  let items = ["New York", "Los Angeles", "San Francisco"];
-  const handleSelectItem = (item: string) => {
-    console.log(item);
-  };
-
   return (
     <div>
-      <Button onClick={() => {}}>My Button</Button>
+      <Like onClick={() => console.log("clicked")} />
     </div>
   );
 }
