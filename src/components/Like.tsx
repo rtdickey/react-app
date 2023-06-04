@@ -6,19 +6,15 @@ interface Props {
 }
 
 const Like = ({ onClick }: Props) => {
-  const [like, setLike] = useState(false);
+  const [status, setStatus] = useState(false);
 
-  const handleClick = () => {
+  const toggle = () => {
+    setStatus(!status);
     onClick();
-    setLike(!like);
   };
 
-  return (
-    <>
-      {!like && <BsHeart onClick={handleClick} />}
-      {like && <BsHeartFill onClick={handleClick} />}
-    </>
-  );
+  if (status) return <BsHeartFill color="#ff6b81" size={20} onClick={toggle} />;
+  return <BsHeart color="#ff6b81" size={20} onClick={toggle} />;
 };
 
 export default Like;
