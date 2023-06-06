@@ -3,20 +3,24 @@ import NavBar from "./components/NavBar";
 import Cart from "./components/Cart";
 
 function App() {
-  const [game, setGame] = useState({
-    id: 1,
-    player: {
-      name: "John",
-    },
+  const [pizza, setPizza] = useState({
+    name: "Spicy Pepperoni",
+    toppings: ["Mushroom"],
   });
 
   const handleClick = () => {
-    setGame({ ...game, player: { ...game.player, name: "Ryan" } });
+    setPizza({ ...pizza, toppings: [...pizza.toppings, "olives"] });
   };
 
   return (
     <div>
-      {game.player.name} <button onClick={handleClick}>Change Name</button>
+      <p>
+        {pizza.name} with{" "}
+        {pizza.toppings.map((item) => (
+          <span key={item}>{" and " + item}</span>
+        ))}
+      </p>
+      <button onClick={handleClick}>Click Me</button>
     </div>
   );
 }
