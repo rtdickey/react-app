@@ -14,17 +14,14 @@ function App() {
 
     setCart({
       ...cart,
-      items: [
-        ...cart.items.map((item) =>
-          item.id === 1
-            ? {
-                id: item.id,
-                title: item.title,
-                quantity: 2,
-              }
-            : item
-        ),
-      ],
+      items: cart.items.map((item) =>
+        item.id === 1
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
+          : item
+      ),
     });
   };
 
