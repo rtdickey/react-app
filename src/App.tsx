@@ -4,16 +4,20 @@ import ExpandableText from "./components/ExpandableText";
 function App() {
   return (
     <div>
-      <ExpandableText maxChars={100}>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum
+      <ExpandableText>Example 1: Less than max characters</ExpandableText>
+      <ExpandableText>
+        Example 2: More than max characters. Lorem ipsum, dolor sit amet
+        consectetur adipisicing elit. Explicabo facere expedita eum dolorum
+        cumque neque, voluptates magni magnam doloremque error. Soluta vitae
+        temporibus omnis sapiente, voluptates non velit ab aspernatur.
+        Doloremque ea ullam sed quasi aspernatur dolorum, nisi neque
+        voluptatibus rem voluptas in labore modi ab adipisci excepturi impedit
+        vero tenetur illum! Non beatae natus ipsam est, dolorum a ratione
+        delectus explicabo! Similique accusamus animi sunt ab deleniti aliquam
+        reiciendis laudantium, a blanditiis perspiciatis voluptas doloremque aut
+        fugiat corrupti impedit odit rem consequatur fuga et. Aperiam explicabo
+        modi nulla ipsa consequatur! Quam minus pariatur magni soluta cupiditate
+        officiis iure tempore!
       </ExpandableText>
     </div>
   );
