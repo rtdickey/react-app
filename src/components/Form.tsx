@@ -3,8 +3,10 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const schema = z.object({
-  name: z.string().min(3),
-  age: z.number().min(18),
+  name: z.string().min(3, { message: "Name must be at least 3 characters." }),
+  age: z
+    .number({ invalid_type_error: "Age field is required" })
+    .min(18, { message: "Age must be at least 18." }),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -37,7 +39,7 @@ const Form = () => {
           Age
         </label>
         <input
-          {...register("age", { required: true, min: 1 })}
+          {...register("age", { valueAsNumber: true })}
           id="age"
           type="number"
           className="form-control"
