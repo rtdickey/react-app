@@ -1,19 +1,18 @@
-import { useFormContext } from "react-hook-form";
-
 interface Props {
   categories: string[];
+  defaultValue: string;
 }
-const SelectCategories = ({ categories }: Props) => {
-  const { register } = useFormContext();
+
+//TODO: Add onChange event
+const SelectCategories = ({ categories, defaultValue }: Props) => {
   return (
     <select
-      {...register("category")}
       name="category"
       id="category"
       className="form-control"
-      defaultValue=""
+      defaultValue={defaultValue}
     >
-      <option value=""></option>
+      <option value={defaultValue}>{defaultValue}</option>
       {categories.map((item, index) => (
         <option key={index} value={item}>
           {item}
