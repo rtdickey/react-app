@@ -91,8 +91,18 @@ const Form = ({ addBudgetItem }: Props) => {
           <p className="text-danger">{errors.category.message}</p>
         )}
       </div>
-      <button className="btn btn-primary" type="submit">
-        Submit
+      <button className="btn btn-outline-primary" type="submit">
+        Add Item
+      </button>
+      <button
+        className="btn btn-outline-secondary ms-2"
+        type="button"
+        onClick={() => {
+          setFocus("description");
+          reset();
+        }}
+      >
+        Reset
       </button>
     </form>
   );
