@@ -1,7 +1,7 @@
 interface Props {
   budgetList: BudgetItem[];
   deleteBudgetItem: (description: string) => void;
-  categoryFilter: string;
+  categoryFilter?: string;
 }
 const BudgetItemTable = ({
   budgetList,
@@ -26,7 +26,7 @@ const BudgetItemTable = ({
         {budgetList.map((item, index) => (
           <tr key={index}>
             <td>{item.description}</td>
-            <td>{item.amount}</td>
+            <td>${item.amount.toFixed(2)}</td>
             <td>{item.category}</td>
             <td>
               <button

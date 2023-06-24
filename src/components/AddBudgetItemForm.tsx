@@ -62,6 +62,7 @@ const Form = ({ addBudgetItem }: Props) => {
           id="amount"
           type="number"
           className="form-control"
+          step={0.01}
         />
         {errors.amount && (
           <p className="text-danger">{errors.amount.message}</p>
