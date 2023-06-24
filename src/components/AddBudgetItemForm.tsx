@@ -24,6 +24,7 @@ const Form = ({ addBudgetItem }: Props) => {
     register,
     handleSubmit,
     reset,
+    setFocus,
     formState: { errors, isValid },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
@@ -32,6 +33,7 @@ const Form = ({ addBudgetItem }: Props) => {
   };
 
   useEffect(() => {
+    setFocus("description");
     reset();
   }, [addBudgetItem]);
 
