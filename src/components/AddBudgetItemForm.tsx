@@ -2,6 +2,7 @@ import { FieldValues, FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
+import SelectCategoriesForm from "./SelectCategoriesForm";
 
 const schema = z.object({
   description: z
@@ -73,20 +74,7 @@ const Form = ({ categories, addBudgetItem }: Props) => {
           <label htmlFor="category" className="form-label">
             Category
           </label>
-          <select
-            {...register("category")}
-            name="category"
-            id="category"
-            className="form-control"
-            defaultValue=""
-          >
-            <option value=""></option>
-            {categories.map((item, index) => (
-              <option key={index} value={item}>
-                {item}
-              </option>
-            ))}
-          </select>
+          <SelectCategoriesForm categories={categories} />
           <input type="hidden" id="category" />
           {errors.category && (
             <p className="text-danger">{errors.category.message}</p>

@@ -13,7 +13,7 @@ const BudgetItemTable = ({
     : budgetList;
 
   return (
-    <table className="table table-bordered mt-3">
+    <table className="table table-bordered">
       <thead>
         <tr>
           <th>Description</th>
