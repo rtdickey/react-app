@@ -1,6 +1,7 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 
 const schema = z.object({
   description: z
@@ -22,12 +23,17 @@ const Form = ({ addBudgetItem }: Props) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => {
     addBudgetItem(data as BudgetItem);
   };
+
+  useEffect(() => {
+    reset();
+  }, [addBudgetItem]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
