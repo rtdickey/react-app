@@ -1,17 +1,8 @@
 interface Props {
   budgetList: BudgetItem[];
   deleteBudgetItem: (description: string) => void;
-  categoryFilter?: string;
 }
-const BudgetItemTable = ({
-  budgetList,
-  deleteBudgetItem,
-  categoryFilter = "",
-}: Props) => {
-  const filteredBudgetList = categoryFilter
-    ? budgetList.filter((item) => item.category == categoryFilter)
-    : budgetList;
-
+const BudgetItemTable = ({ budgetList, deleteBudgetItem }: Props) => {
   return (
     <table className="table table-bordered">
       <thead>
