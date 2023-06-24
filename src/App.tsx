@@ -3,6 +3,7 @@ import { useState } from "react";
 import BudgetItemTable from "./components/BudgetItemTable";
 
 function App() {
+  const categories = ["Entertainment", "Groceries", "Utilities"];
   const [budgetList, setBudgetList] = useState<BudgetItem[]>([]);
   const addBudgetItem = (formData: BudgetItem) => {
     setBudgetList([...budgetList, formData]);
@@ -13,7 +14,10 @@ function App() {
 
   return (
     <>
-      <AddBudgetItemForm addBudgetItem={addBudgetItem} />
+      <AddBudgetItemForm
+        categories={categories}
+        addBudgetItem={addBudgetItem}
+      />
       <BudgetItemTable
         budgetList={budgetList}
         deleteBudgetItem={handleDeleteBudgetItem}
