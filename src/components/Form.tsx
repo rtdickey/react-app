@@ -1,22 +1,19 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import SelectList from "./SelectList";
 
 const schema = z.object({
   description: z
     .string()
     .min(3, { message: "Description must be at least 3 characters." }),
   amount: z.number({ invalid_type_error: "Amount is required" }),
-  category: z.string({ invalid_type_error: "Category is required" }),
+  category: z.string().min(1, { message: "Category is required" }),
 });
 
 type FormData = z.infer<typeof schema>;
 
 const Form = () => {
   const categories = ["Groceries", "Utilities", "Entertainment"];
-  const [category, setCategory] = useState(categories[0]);
   const {
     register,
     handleSubmit,
@@ -24,11 +21,6 @@ const Form = () => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => console.log(data);
-
-  const handleOnChange = (selectList: HTMLSelectElement) => {
-    console.log("Select List Choice:", selectList.value);
-    setCategory(selectList.value);
-  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -64,19 +56,21 @@ const Form = () => {
         <label htmlFor="category" className="form-label">
           Category
         </label>
-        <SelectList
-          id="categoryList"
-          items={categories}
-          defaultOption=""
-          className="form-control"
-          onChange={handleOnChange}
-        ></SelectList>
-        <input
-          type="hidden"
+        <select
           {...register("category")}
+          name="category"
           id="category"
-          value={category}
-        />
+          className="form-control"
+          defaultValue=""
+        >
+          <option value=""></option>
+          {categories.map((item, index) => (
+            <option key={index} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
+        <input type="hidden" id="category" />
         {errors.category && (
           <p className="text-danger">{errors.category.message}</p>
         )}
