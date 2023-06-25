@@ -1,64 +1,22 @@
-import AddBudgetItemForm from "./components/AddBudgetItemForm";
-import { useEffect, useState } from "react";
-import BudgetItemTable from "./components/BudgetItemTable";
-import SelectCategories from "./components/SelectCategories";
+import { useState } from "react";
+import ExpenseList from "./expense-tracker/components/ExpenseList";
 
 function App() {
-  const categories = ["Entertainment", "Groceries", "Utilities"];
-  const [budgetList, setBudgetList] = useState<BudgetItem[]>([]);
-  const [categoryFilter, setCategoryFilter] = useState("");
-  const [filteredBudgetList, setFilteredBudgetList] = useState<BudgetItem[]>(
-    []
-  );
-
-  const addBudgetItem = (formData: BudgetItem) => {
-    if (
-      !budgetList.some(
-        (item) =>
-          item.description === formData.description &&
-          item.category === formData.category
-      )
-    ) {
-      setBudgetList([...budgetList, formData]);
-    }
-  };
-
-  const handleDeleteBudgetItem = (description: string) => {
-    setBudgetList(budgetList.filter((item) => item.description != description));
-  };
-
-  useEffect(() => {
-    if (categoryFilter) {
-      setFilteredBudgetList(
-        budgetList.filter((item) => item.category === categoryFilter)
-      );
-    } else {
-      setFilteredBudgetList(budgetList);
-    }
-  }, [categoryFilter, budgetList]);
-
-  const handleOnChangeCategoryFilter = (selectedCategory: string) => {
-    setCategoryFilter(selectedCategory);
-  };
-
+  const [expenses, setExpenses] = useState([
+    { id: 1, description: "aaa", amount: 10, category: "Utilities" },
+    { id: 2, description: "bbb", amount: 10, category: "Utilities" },
+    { id: 3, description: "ccc", amount: 10, category: "Utilities" },
+    { id: 4, description: "ddd", amount: 10, category: "Utilities" },
+  ]);
   return (
-    <>
-      <AddBudgetItemForm
-        categories={categories}
-        addBudgetItem={addBudgetItem}
+    <div>
+      <ExpenseList
+        expenses={expenses}
+        onDelete={(id: number) =>
+          setExpenses(expenses.filter((e) => e.id != id))
+        }
       />
-      <div className="mt-3">
-        <SelectCategories
-          categories={categories}
-          defaultValue="All Categories"
-          onChange={handleOnChangeCategoryFilter}
-        />
-        <BudgetItemTable
-          budgetList={filteredBudgetList}
-          deleteBudgetItem={handleDeleteBudgetItem}
-        />
-      </div>
-    </>
+    </div>
   );
 }
 
