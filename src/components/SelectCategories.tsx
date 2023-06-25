@@ -18,10 +18,10 @@ const SelectCategories = ({ categories, defaultValue, onChange }: Props) => {
       name="category"
       id="category"
       className="form-control"
-      defaultValue={defaultValue}
+      defaultValue=""
       onChange={handleOnChange}
     >
-      <option value={defaultValue}>{defaultValue}</option>
+      <option value="">{defaultValue}</option>
       {categories.map((item, index) => (
         <option key={index} value={item}>
           {item}
