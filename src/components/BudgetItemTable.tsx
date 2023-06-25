@@ -1,8 +1,14 @@
+import { useEffect, useState } from "react";
+
 interface Props {
   budgetList: BudgetItem[];
   deleteBudgetItem: (description: string) => void;
 }
 const BudgetItemTable = ({ budgetList, deleteBudgetItem }: Props) => {
+  const newTotal = budgetList.reduce(
+    (total, currItem) => total + currItem.amount,
+    0
+  );
   return (
     <table className="table table-bordered">
       <thead>
@@ -33,6 +39,14 @@ const BudgetItemTable = ({ budgetList, deleteBudgetItem }: Props) => {
           </tr>
         ))}
       </tbody>
+      <tfoot>
+        <tr>
+          <td className="font-weight-bold">Total</td>
+          <td className="font-weight-bold">${newTotal.toFixed(2)}</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tfoot>
     </table>
   );
 };
