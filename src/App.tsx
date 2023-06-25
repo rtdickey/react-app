@@ -12,7 +12,15 @@ function App() {
   );
 
   const addBudgetItem = (formData: BudgetItem) => {
-    setBudgetList([...budgetList, formData]);
+    if (
+      !budgetList.some(
+        (item) =>
+          item.description === formData.description &&
+          item.category === formData.category
+      )
+    ) {
+      setBudgetList([...budgetList, formData]);
+    }
   };
 
   const handleDeleteBudgetItem = (description: string) => {
