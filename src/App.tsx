@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import apiClient, { CanceledError } from "./services/api-client";
 import userService, { User } from "./services/user-service";
 
 function App() {
@@ -28,7 +27,7 @@ function App() {
     const newUser = { id: 0, name: "Mosh" };
     setUsers([newUser, ...users]);
     userService
-      .addUser(newUser)
+      .createUser(newUser)
       .then(({ data: savedUser }) => setUsers([savedUser, ...users]))
       .catch((err) => {
         setError(err.message);
