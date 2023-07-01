@@ -13,6 +13,18 @@ class UserService {
     });
     return { request, cancel: () => controller.abort() };
   }
+
+  addUser(newUser: User) {
+    return apiClient.post("/users", newUser);
+  }
+
+  deleteUser(userId: number) {
+    return apiClient.delete("/users/" + userId);
+  }
+
+  updateUser(user: User) {
+    return apiClient.patch("/users/" + user.id, user);
+  }
 }
 
 export default new UserService();
